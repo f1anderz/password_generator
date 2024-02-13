@@ -5,6 +5,11 @@ export default {
     return {
       lengthValue: 12
     }
+  },
+  watch: {
+    lengthValue(newValue) {
+      this.$emit('updated', newValue)
+    }
   }
 }
 </script>

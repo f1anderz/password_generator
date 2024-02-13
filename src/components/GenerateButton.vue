@@ -1,11 +1,16 @@
 <script>
 export default {
-  name: "GenerateButton"
+  name: "GenerateButton",
+  methods: {
+    generateKey() {
+      this.$emit('generated');
+    }
+  }
 }
 </script>
 
 <template>
-  <div class="button">
+  <div class="button" @click="this.generateKey">
     Generate
   </div>
 </template>
@@ -22,5 +27,9 @@ export default {
   font-size: 1.2rem;
   color: #ffffff;
   background: $highlight-color;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 </style>

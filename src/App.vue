@@ -9,6 +9,48 @@ import GenerateButton from "@/components/GenerateButton.vue";
 export default {
   name: "App",
   components: {GenerateButton, AlertWindow, Algorithm, Options, PasswordLength, PasswordInput},
+  data() {
+    return {
+      messageHidden: true,
+      passwordLength: 12,
+      generator: false,
+      options: {
+        "Capital": true,
+        "Numbers": true,
+        "Special": false
+      },
+      algorithm: "Normal"
+    }
+  },
+  methods: {
+    showAlert() {
+      this.generator = true;
+      this.messageHidden = false;
+      setTimeout(() => {
+        this.messageHidden = true;
+        this.generator = false;
+      }, 750);
+    },
+    setPasswordLength(value) {
+      this.passwordLength = value;
+    },
+    setOptions(value) {
+      switch (value) {
+        case "Use capital letters":
+          this.options["Capital"] = !this.options["Capital"];
+          break;
+        case "Use numbers":
+          this.options["Numbers"] = !this.options["Numbers"];
+          break;
+        case "Use special symbols":
+          this.options["Special"] = !this.options["Special"];
+          break;
+      }
+    },
+    setAlgorithm(value) {
+      this.algorithm = value;
+    }
+  }
 }
 </script>
 
@@ -19,16 +61,17 @@ export default {
         Password<span class="wrapper-container-title-highlighted">Generator</span>
       </div>
       <div class="wrapper-container-row">
-        <password-input @passCopy=""/>
-        <password-length/>
+        <password-input :generator="this.generator" :password-length="this.passwordLength" :options="this.options"
+                        :algorithm="this.algorithm" @copyPass="this.showAlert"/>
+        <password-length @updated="this.setPasswordLength"/>
       </div>
       <div class="wrapper-container-row">
-        <options/>
-        <algorithm/>
+        <options @selected="this.setOptions"/>
+        <algorithm @selected="this.setAlgorithm"/>
       </div>
-      <generate-button/>
+      <generate-button @generated="this.showAlert"/>
     </div>
-    <alert-window class="wrapper-message"/>
+    <alert-window :is-hidden="this.messageHidden"/>
   </div>
 </template>
 
@@ -37,6 +80,7 @@ export default {
 @import "@/assets/scss/variables";
 
 .wrapper {
+  overflow: hidden;
   width: 100%;
   height: 100vh;
   position: relative;
@@ -78,11 +122,6 @@ export default {
       align-items: center;
       flex-wrap: wrap;
     }
-  }
-
-  &-message {
-    position: absolute;
-    display: none;
   }
 }
 </style>

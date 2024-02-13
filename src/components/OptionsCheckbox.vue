@@ -5,6 +5,10 @@ export default {
     option: {
       type: String,
       required: true
+    },
+    checked: {
+      type: Boolean,
+      required: true
     }
   }
 }
@@ -13,7 +17,7 @@ export default {
 <template>
   <label class="checkbox">
     {{ this.option }}
-    <input type="checkbox">
+    <input type="checkbox" :checked="this.checked" @click="this.$emit('selected', this.option)">
     <span class="checkbox-checkmark"></span>
   </label>
 </template>

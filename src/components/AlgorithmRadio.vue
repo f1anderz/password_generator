@@ -21,7 +21,7 @@ export default {
 <template>
   <label class="radio">
     {{ this.option }}
-    <input type="radio" :name="this.group" :checked="this.checked">
+    <input type="radio" :name="this.group" :checked="this.checked" @click="this.$emit('selected', this.option)">
     <span class="radio-checkmark"></span>
   </label>
 </template>

@@ -4,11 +4,65 @@ export default {
   data() {
     return {
       password: "",
+      generatorString: "",
+      charset: [
+        {
+          name: "letters", value: "abcdefghijklmnopqrstuvwxyz"
+        },
+        {
+          name: "Capital", value: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        },
+        {
+          name: "Numbers", value: "0123456789"
+        },
+        {
+          name: "Special", value: "~`!@#$%^&*()_-+={[}]|\\:;\"'<,>.?/"
+        }
+      ]
     }
-  }, methods: {
+  },
+  props: {
+    generator: {
+      type: Boolean,
+      required: true
+    },
+    passwordLength: {
+      type: Number,
+      required: true
+    },
+    options: {
+      type: Object,
+      required: true
+    },
+    algorithm: {
+      type: String,
+      required: true
+    }
+  },
+  methods: {
     async copyPassword() {
       await navigator.clipboard.writeText(this.password);
-      this.$emit('passCopy');
+      this.$emit('copyPass');
+    },
+    generatePassword() {
+      let newPassword = "";
+      this.generatorString = this.charset[0].value;
+      this.charset.forEach((chars) => {
+        if (this.options[chars.name]) {
+          this.generatorString += chars.value;
+        }
+      })
+      for (let i = 0; i < this.passwordLength; i++) {
+        newPassword += this.generatorString[Math.floor(Math.random() * this.generatorString.length)];
+      }
+      this.password = newPassword;
+      this.copyPassword();
+    }
+  }, watch: {
+    generator(newGenerator) {
+      if (newGenerator) {
+        this.generatePassword();
+      }
     }
   }
 }

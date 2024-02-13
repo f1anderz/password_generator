@@ -20,6 +20,11 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    radioSelected(value) {
+      this.$emit('selected', value)
+    }
   }
 }
 </script>
@@ -29,7 +34,8 @@ export default {
     <span class="algorithm-title">Algorithm:</span>
     <transition-group name="algorithm">
       <algorithm-radio v-for="algorithm in this.algorithms" :key="algorithm.id" :option="algorithm.value"
-                       :checked="algorithm.checked" :group="this.radioGroup"/>
+                       :checked="algorithm.checked" :group="this.radioGroup"
+                       @selected="this.radioSelected"/>
     </transition-group>
   </div>
 </template>
