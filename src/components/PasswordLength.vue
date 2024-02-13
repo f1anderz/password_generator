@@ -32,7 +32,7 @@ export default {
   flex-direction: row;
   align-items: center;
   gap: .4em;
-  width: 16%;
+  width: 25%;
 
   &-container {
     display: flex;
