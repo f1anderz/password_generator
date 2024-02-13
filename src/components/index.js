@@ -5,5 +5,7 @@ import OptionsCheckbox from "@/components/OptionsCheckbox.vue";
 import PasswordInput from "@/components/PasswordInput.vue";
 import PasswordLength from "@/components/PasswordLength.vue";
 import AlertWindow from "@/components/AlertWindow.vue";
+import GenerateButton from "@/components/GenerateButton.vue";
 
-export default [Algorithm, AlgorithmRadio, Options, OptionsCheckbox, PasswordInput, PasswordLength, AlertWindow];
+export default [Algorithm, AlgorithmRadio, Options, OptionsCheckbox, PasswordInput, PasswordLength, AlertWindow,
+    GenerateButton];
