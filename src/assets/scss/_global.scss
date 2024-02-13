@@ -1,0 +1,10 @@
+@use "variables";
+@use "reset";
+
+* {
+  font-family: variables.$font-family;
+}
+
+::selection {
+  background-color: rgba(21, 12, 1, .1);
+}
