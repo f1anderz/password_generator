@@ -28,7 +28,7 @@ export default {
   cursor: pointer;
   user-select: none;
   padding-left: 2.1em;
-  padding-top: .3em;
+  padding-top: .2em;
 
   & input {
     position: absolute;

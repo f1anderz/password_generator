@@ -36,7 +36,6 @@ export default {
   cursor: pointer;
   user-select: none;
   padding-left: 2.1rem;
-  padding-top: .1rem;
 
   & input {
     position: absolute;
@@ -52,9 +51,9 @@ export default {
 
   & &-checkmark:after {
     left: .48rem;
-    top: .24rem;
-    width: .3rem;
-    height: .6rem;
+    top: .25rem;
+    width: .25rem;
+    height: .5rem;
     border: solid #ffffff;
     border-width: 0 .2rem .2rem 0;
     transform: rotate(45deg);
