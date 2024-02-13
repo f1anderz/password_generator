@@ -35,8 +35,8 @@ export default {
   flex-direction: row;
   cursor: pointer;
   user-select: none;
-  padding-left: 2.1em;
-  padding-top: .3em;
+  padding-left: 2.1rem;
+  padding-top: .1rem;
 
   & input {
     position: absolute;
@@ -51,12 +51,12 @@ export default {
   }
 
   & &-checkmark:after {
-    left: .58em;
-    top: .3em;
-    width: .3em;
-    height: .6em;
+    left: .48rem;
+    top: .24rem;
+    width: .3rem;
+    height: .6rem;
     border: solid #ffffff;
-    border-width: 0 .2em .2em 0;
+    border-width: 0 .2rem .2rem 0;
     transform: rotate(45deg);
   }
 
@@ -68,8 +68,8 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    height: 1.6em;
-    width: 1.6em;
+    height: 1.4rem;
+    width: 1.4rem;
     border-radius: 50%;
     background-color: #ffffff;
 
