@@ -3,12 +3,44 @@ export default {
   name: "PasswordLength",
   data() {
     return {
-      lengthValue: 12
+      lengthValue: 12,
+      upShadow: false,
+      downShadow: false
+    }
+  },
+  methods: {
+    resetShadows(){
+      this.upShadow = false;
+      this.downShadow = false;
+    },
+    increaseLength() {
+      this.resetShadows();
+      if (this.lengthValue < 32) {
+        this.lengthValue++;
+      }
+      this.upShadow = this.lengthValue === 32;
+    },
+    decreaseLength() {
+      this.resetShadows();
+      if (this.lengthValue > 4) {
+        this.lengthValue--;
+      }
+      this.downShadow = this.lengthValue === 4;
+    },
+    validateInput() {
+      this.resetShadows();
+      if (this.lengthValue < 4) {
+        this.lengthValue = 4;
+        this.downShadow = true;
+      } else if (this.lengthValue > 32) {
+        this.lengthValue = 32;
+        this.upShadow = true;
+      }
     }
   },
   watch: {
-    lengthValue(newValue) {
-      this.$emit('updated', newValue)
+    lengthValue(newLengthValue) {
+      this.$emit('updated', newLengthValue);
     }
   }
 }
@@ -18,12 +50,13 @@ export default {
   <div class="password-length">
     <div class="password-length-label">Length:</div>
     <div class="password-length-container">
-      <input class="password-length-container-input" type="number" v-model="this.lengthValue">
+      <input class="password-length-container-input" type="number" v-model="this.lengthValue"
+             @blur="this.validateInput">
       <div class="password-length-container-arrows">
         <img class="password-length-container-arrows-up" src="../assets/img/arrow.svg" alt="Up"
-             @click="this.lengthValue += 1">
+             @click="this.increaseLength" :class="{shadow: upShadow}">
         <img class="password-length-container-arrows-down" src="../assets/img/arrow.svg" alt="Down"
-             @click="this.lengthValue -= 1">
+             @click="this.decreaseLength" :class="{shadow: downShadow}">
       </div>
     </div>
   </div>
@@ -86,6 +119,14 @@ export default {
         }
       }
     }
+  }
+}
+
+.shadow {
+  opacity: .5;
+
+  &:hover {
+    cursor: default;
   }
 }
 </style>

@@ -83,7 +83,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 50%;
+  width: 70%;
   background: #ffffff;
   border: 2px solid $highlight-color;
   border-radius: .5em;
