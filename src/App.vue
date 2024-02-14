@@ -29,7 +29,7 @@ export default {
         this.messageHidden = true;
       }, 750);
     },
-    async generatePassword(){
+    async generatePassword() {
       this.generator = true;
       await this.showAlert();
       this.generator = false;
@@ -81,6 +81,7 @@ export default {
 <style lang="scss">
 @use '@/assets/scss/global';
 @import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
 
 .wrapper {
   overflow: hidden;
@@ -91,26 +92,97 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
 
   &-container {
-    width: 40%;
     margin: 0 auto;
-    padding: 2vh 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1em;
     background: $background-color;
-    border-radius: 1em;
+    border-radius: 1rem;
+
+    @include breakpoint(xs) {
+      width: 90%;
+      padding: 1vh 0;
+      gap: .5rem;
+    }
+
+    @include breakpoint(s) {
+      width: 60%;
+      padding: 3vh 0;
+      gap: .5rem;
+    }
+
+    @include breakpoint(m) {
+      width: 60%;
+      padding: 3vh 0;
+      gap: .5rem;
+    }
+
+    @include breakpoint(l) {
+      width: 65%;
+      padding: 3vh 0;
+      gap: .8rem;
+    }
+
+    @include breakpoint(xl) {
+      width: 50%;
+      padding: 3vh 0;
+      gap: .8rem;
+    }
+
+    @include breakpoint(xxl) {
+      width: 40%;
+      padding: 2vh 0;
+      gap: 1rem;
+    }
+
+    @include breakpoint(xxxl) {
+      width: 40%;
+      padding: 2vh 0;
+      gap: 2rem;
+    }
 
     &-title {
       display: flex;
-      font-size: 2rem;
-      gap: .8rem;
       font-weight: bold;
+
+      @include breakpoint(xs) {
+        font-size: 1.8rem;
+        gap: .5rem;
+      }
+
+      @include breakpoint(s) {
+        font-size: 1.6rem;
+        gap: .5rem;
+      }
+
+      @include breakpoint(m) {
+        font-size: 1.8rem;
+        gap: .5rem;
+      }
+
+      @include breakpoint(l) {
+        font-size: 2rem;
+        gap: .7rem;
+      }
+
+      @include breakpoint(xl) {
+        font-size: 2rem;
+        gap: .7rem;
+      }
+
+      @include breakpoint(xxl) {
+        font-size: 2rem;
+        gap: .8rem;
+      }
+
+      @include breakpoint(xxxl) {
+        font-size: 4rem;
+        gap: 1.6rem;
+      }
 
       &-highlighted {
         color: $highlight-color;
@@ -122,8 +194,36 @@ export default {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       flex-wrap: wrap;
+
+      @include breakpoint(xs) {
+        gap: .5rem;
+      }
+
+      @include breakpoint(s) {
+        gap: .5rem;
+      }
+
+      @include breakpoint(m) {
+        gap: .8rem;
+      }
+
+      @include breakpoint(l) {
+        gap: .8rem;
+      }
+
+      @include breakpoint(xl) {
+        gap: .8rem;
+      }
+
+      @include breakpoint(xxl) {
+        gap: 1rem;
+      }
+
+      @include breakpoint(xxxl) {
+        gap: 2rem;
+      }
     }
   }
 }

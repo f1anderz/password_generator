@@ -78,16 +78,44 @@ export default {
 
 <style scoped lang="scss">
 @import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
 
 .password-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 70%;
   background: #ffffff;
   border: 2px solid $highlight-color;
   border-radius: .5em;
   padding: .2em;
+
+  @include breakpoint(xs) {
+    width: 100%;
+  }
+
+  @include breakpoint(s) {
+    width: 100%;
+  }
+
+  @include breakpoint(m) {
+    width: 100%;
+  }
+
+  @include breakpoint(l) {
+    width: 70%;
+  }
+
+  @include breakpoint(xl) {
+    width: 68%;
+  }
+
+  @include breakpoint(xxl) {
+    width: 70%;
+  }
+
+  @include breakpoint(xxxl) {
+    width: 70%;
+  }
 
   &-input {
     display: block;

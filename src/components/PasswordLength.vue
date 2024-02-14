@@ -9,7 +9,7 @@ export default {
     }
   },
   methods: {
-    resetShadows(){
+    resetShadows() {
       this.upShadow = false;
       this.downShadow = false;
     },
@@ -64,13 +64,41 @@ export default {
 
 <style scoped lang="scss">
 @import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
 
 .password-length {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: .4em;
-  width: 25%;
+
+  @include breakpoint(xs) {
+    width: 50%;
+  }
+
+  @include breakpoint(s) {
+    width: 35%;
+  }
+
+  @include breakpoint(m) {
+    width: 35%;
+  }
+
+  @include breakpoint(l) {
+    width: 24%;
+  }
+
+  @include breakpoint(xl) {
+    width: 25%;
+  }
+
+  @include breakpoint(xxl) {
+    width: 25%;
+  }
+
+  @include breakpoint(xxxl) {
+    width: 25%;
+  }
 
   &-container {
     display: flex;
