@@ -24,12 +24,15 @@ export default {
   },
   methods: {
     showAlert() {
-      this.generator = true;
       this.messageHidden = false;
       setTimeout(() => {
         this.messageHidden = true;
-        this.generator = false;
       }, 750);
+    },
+    async generatePassword(){
+      this.generator = true;
+      await this.showAlert();
+      this.generator = false;
     },
     setPasswordLength(value) {
       this.passwordLength = value;
@@ -69,7 +72,7 @@ export default {
         <options @selected="this.setOptions"/>
         <algorithm @selected="this.setAlgorithm"/>
       </div>
-      <generate-button @generated="this.showAlert"/>
+      <generate-button @generated="this.generatePassword"/>
     </div>
     <alert-window :is-hidden="this.messageHidden"/>
   </div>
